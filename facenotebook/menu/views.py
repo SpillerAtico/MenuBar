@@ -40,7 +40,13 @@ def show_friends(request):
 
 
 def news(request):
-    return HttpResponse(f'Новости')
+    data = {
+        'title': 'Страница с новостями',
+        'bar': bar,
+    }
+    return render(request,
+                  'menu/news.html',
+                  data)
 
 
 def account(request):
@@ -49,6 +55,9 @@ def account(request):
 
 def readme(request):
     data = {
-        'title': 'Как я понял задание?'
+        'title': 'Как я понял задание?',
+        'bar': bar,
     }
-    return render(request, 'menu/readme.html', data)
+    return render(request,
+                  'menu/readme.html',
+                  data)

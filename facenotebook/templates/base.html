@@ -5,7 +5,6 @@
     <title>{{ title|default:'Task' }}</title>
 </head>
 <body>
-
 <ul>
     <li><a href="{% url 'home' %}">Главная</a></li>
     {% for value in bar %}
@@ -21,22 +20,8 @@
     {% endfor %}
 </ul>
 
+{% block content %}
+{% endblock %}
 
-<ul>
-    {% for dict in friends %}
-    {% if dict.is_friend %}
-
-    <li>
-        <h2>{{ dict.name }}</h2>
-        <p><a href="{% url 'friend' dict.id %}">{{ dict.content }}</a></p>
-
-        {% if not forloop.last %}
-        <hr>
-        {% endif %}
-    </li>
-
-    {% endif %}
-    {% endfor %}
-</ul>
 </body>
 </html>

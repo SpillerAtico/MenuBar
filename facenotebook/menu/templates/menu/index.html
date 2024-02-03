@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+<ul>
+    {% for dict in friends %}
+    {% if dict.is_friend %}
+
+    <li>
+        <h2>{{ dict.name }}</h2>
+        <p><a href="{% url 'friend' dict.id %}">{{ dict.content }}</a></p>
+
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+    </li>
+
+    {% endif %}
+    {% endfor %}
+</ul>
+
+{% endblock %}
