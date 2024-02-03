@@ -4,6 +4,8 @@
 
 <h1>{{ title }}</h1>
 
+{% include 'menu/includes/friends&followers.html' %}
+
 <ul>
     {% for dict in friends %}
     {% if dict.is_friend %}

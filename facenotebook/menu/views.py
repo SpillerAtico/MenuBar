@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.template.loader import render_to_string
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 
 bar = [
@@ -24,10 +23,9 @@ def menu(request):
     data = {
         'title': 'Основная страница представления',
         'bar': bar,
-        'friends': data_db,
     }
     return render(request,
-                  'menu/index.html',
+                  'menu/home.html',
                   data)
 
 
@@ -36,7 +34,14 @@ def show_friend(request, friend_id):
 
 
 def show_friends(request):
-    return HttpResponse(f'Отображение всех друзей')
+    data = {
+        'title': 'Друзья и подписчики',
+        'bar': bar,
+        'friends': data_db,
+    }
+    return render(request,
+                  'menu/friends.html',
+                  data)
 
 
 def news(request):
