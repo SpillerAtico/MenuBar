@@ -14,6 +14,11 @@ data_db = [
     {'id': 3, 'name': 'Дымок Чёкавоизачем', 'content': 'Страница Дымок Чёкавоизачем', 'is_friend': True},
 ]
 
+friends_category = [
+    {'id': 1, 'name': 'Добавленные друзья', 'url_name': 'added_friends'},
+    {'id': 2, 'name': 'Подписчики', 'url_name': 'subscribers'},
+]
+
 
 def page_not_found(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
@@ -31,6 +36,28 @@ def menu(request):
 
 def show_friend(request, friend_id):
     return HttpResponse(f'Отображение друга с id = {friend_id}')
+
+
+def show_added_friends(request):
+    data = {
+        'title': 'Добавленные друзья',
+        'bar': bar,
+        'friends': data_db,
+    }
+    return render(request,
+                  'menu/added_friends.html',
+                  data)
+
+
+def show_subscribers(request):
+    data = {
+        'title': 'Подписчики',
+        'bar': bar,
+        'friends': data_db,
+    }
+    return render(request,
+                  'menu/subscribers.html',
+                  data)
 
 
 def show_friends(request):
@@ -55,14 +82,10 @@ def news(request):
 
 
 def account(request):
-    return HttpResponse(f'Твой аккаунт')
-
-
-def readme(request):
     data = {
-        'title': 'Как я понял задание?',
+        'title': 'Аккаунт',
         'bar': bar,
     }
     return render(request,
-                  'menu/readme.html',
+                  'menu/account.html',
                   data)

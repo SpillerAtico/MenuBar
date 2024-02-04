@@ -2,13 +2,13 @@
 
 {% block content %}
 
-
 <h1>{{ title }}</h1>
 
 {% include 'menu/includes/friends&followers.html' %}
 
 <ul>
     {% for dict in friends %}
+    {% if not dict.is_friend %}
 
     <li>
         <h3>{{ dict.name }}</h3>
@@ -19,6 +19,7 @@
         {% endif %}
     </li>
 
+    {% endif %}
     {% endfor %}
 </ul>
 
