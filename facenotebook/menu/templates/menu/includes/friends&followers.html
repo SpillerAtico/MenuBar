@@ -1,9 +1,0 @@
-{% load menu_tags %}
-<nav>
-    {% get_categories as categories %}
-    {% for category in categories %}
-        <a href="{% url category.url_name %}"> {{ category.name }} </a>|
-    {% endfor %}
-</nav>
-<br>
-<hr>

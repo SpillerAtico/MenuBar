@@ -1,0 +1,26 @@
+{% load static %}
+{% load menu_tags %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title|default:'Task' }}</title>
+    <link type="text/css" href="{% static 'menu/css/styles.css' %}" rel="stylesheet"/>
+</head>
+<body>
+
+<h1>Начальная страница</h1>
+
+{% draw_menu 'test1' %}
+
+<div class="content">
+
+{% block content %}
+{% endblock %}
+</div>
+
+
+</body>
+</html>

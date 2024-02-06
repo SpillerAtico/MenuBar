@@ -1,0 +1,7 @@
+<hr>
+{% for category in data_menu_category %}
+
+<li><a class="selected" href="{% url 'show_category' category.slug %}">{{ category.category_name }}</a></li>
+{% endfor %}
+
+<hr>
