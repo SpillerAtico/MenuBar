@@ -11,14 +11,16 @@
 </head>
 <body>
 
-<h1>Начальная страница</h1>
+<h1><a href="{% url 'base' %}">Начальная страница</a></h1>
 
-{% draw_menu 'test1' %}
+
+{% draw_menu_simple 'menu' %}
+
+{% draw_menu_inclusion 'menu' %}
 
 <div class="content">
-
-{% block content %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
 </div>
 
 

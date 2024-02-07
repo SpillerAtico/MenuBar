@@ -1,7 +1,18 @@
-<hr>
-{% for category in data_menu_category %}
+{% load menu_tags %}
 
-<li><a class="selected" href="{% url 'show_category' category.slug %}">{{ category.category_name }}</a></li>
-{% endfor %}
-
-<hr>
+<ul>
+    {% for item in menu_items %}
+        <li>
+            {% if item.slug in path %}
+                <a class='selected' href="{{ item.get_absolute_url }}">{{ item.name }}</a>
+            {% else %}
+                <a href="{{ item.get_absolute_url }}">{{ item.name }}</a>
+            {% endif %}
+            {% if item.children.exists %}
+                {% for item in item.children.all %}
+                    {% draw_menu_inclusion item %}
+                {% endfor %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
